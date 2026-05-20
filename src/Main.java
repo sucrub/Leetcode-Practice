@@ -78,6 +78,21 @@ public class Main {
         return false;
     }
 
+    // 2657
+    public static int[] findThePrefixCommonArray(int[] A, int[] B) {
+        TreeSet<Integer> seen = new TreeSet<>();
+        int n = A.length;
+        int[] C = new int[n];
+        for(int i = 0; i < n; i++) {
+            int check1 = 0, check2 = 0;
+            if(!seen.add(A[i])) check1 = 1;
+            if(!seen.add(B[i])) check2 = 1;
+            if(i == 0) C[i] = check1 + check2;
+            else C[i] = C[i - 1] + check1 + check2;
+        }
+        return C;
+    }
+
     public static void main(String[] args) {
 
     }
